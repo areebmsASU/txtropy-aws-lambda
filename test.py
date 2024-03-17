@@ -50,6 +50,7 @@ def test_get_related():
 
     body = loads(response["body"])
 
+    assert [v["value"] for v in body[:2]] == sorted([v["value"] for v in body[:2]])
     assert 0 < len(body) <= 100
     assert response["statusCode"] == 200
     assert type(body) is list
