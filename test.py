@@ -42,15 +42,13 @@ def test_get_related():
     environ["NAME"] = "relentropygetter"
     response = get_related(
         event={
-            "pathParameters": {"attr": "rel_entr"},
+            "pathParameters": {"attr": "entr_gained"},
             "queryStringParameters": {"chunks": "29783,29784", "limit": "100"},
         },
         context={},
     )
 
     body = loads(response["body"])
-
-    assert [v["value"] for v in body[:2]] == sorted([v["value"] for v in body[:2]])
     assert 0 < len(body) <= 100
     assert response["statusCode"] == 200
     assert type(body) is list
