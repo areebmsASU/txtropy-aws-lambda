@@ -1,11 +1,18 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
-Description: A hello world application.
+Description: API functions for textropy apps.
 Resources:
   GetBooksFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: getBooks
       Handler: get_books.lambda_handler
+      Runtime: python3.10
+      CodeUri: .
+  GetRelatedFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: getRelated
+      Handler: get_related.lambda_handler
       Runtime: python3.10
       CodeUri: .
